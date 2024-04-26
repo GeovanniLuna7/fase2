@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Tareas</title>
+</head>
+<body>
+    <div id="loginPage">
+        <h1>Inicio de Sesión</h1>
+        <input type="text" id="username" placeholder="Usuario">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button onclick="authenticate()">Iniciar sesión</button>
+        <p id="loginError" style="color: red; display: none;">Credenciales incorrectas</p>
+    </div>
+
+    <div id="welcomePage" style="display: none;">
+        <h1>Bienvenido</h1>
+        <button onclick="showTaskForm()">Registrar Nueva Tarea</button>
+        <button onclick="queryData()">Consultar Datos</button>
+        <div id="taskForm" style="display: none;">
+            
+            <h2>Registrar Nueva Tarea</h2>
+            <div>
+                <label for="taskCode">Código de Tarea:</label>
+                <input type="text" id="taskCode">
+            </div>
+            <div>
+                <label for="taskTitle">Título de Tarea:</label>
+                <input type="text" id="taskTitle">
+            </div>
+            <div>
+                <label for="taskDescription">Descripción de Tarea:</label>
+                <textarea id="taskDescription"></textarea>
+            </div>
+            <div>
+                <label for="taskStartDate">Fecha de Inicio:</label>
+                <input type="date" id="taskStartDate">
+            </div>
+            <div>
+                <label for="clientName">Nombre del Cliente:</label>
+                <input type="text" id="clientName">
+            </div>
+            <div>
+                <label for="projectId">ID del Proyecto:</label>
+                <input type="text" id="projectId">
+            </div>
+            <div>
+                <label for="comments">Comentarios:</label>
+                <textarea id="comments"></textarea>
+            </div>
+            <div>
+                <label for="taskStatus">Estatus:</label>
+                <select id="taskStatus">
+                    <option value="Por hacer" selected>Por hacer</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Rechazado">Rechazado</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Cerrado">Cerrado</option>
+                    <option value="En pruebas de calidad">En pruebas de calidad</option>
+                    <option value="En validación por el usuario">En validación por el usuario</option>
+                    <option value="En proceso de liberación">En proceso de liberación</option>
+                </select>
+            </div>
+            <button onclick="addTask()">Agregar Tarea</button>
+        </div>
+
+        <div id="taskList">
+           
+            <h2>Tareas Registradas</h2>
+            <label for="statusFilter">Filtrar por estatus:</label>
+            <select id="statusFilter" onchange="filterTasks()">
+                <option value="Todos">Todos</option>
+                <option value="Por hacer">Por hacer</option>
+                <option value="En progreso">En progreso</option>
+                <option value="Rechazado">Rechazado</option>
+                <option value="Cancelado">Cancelado</option>
+                <option value="Cerrado">Cerrado</option>
+                <option value="En pruebas de calidad">En pruebas de calidad</option>
+                <option value="En validación por el usuario">En validación por el usuario</option>
+                <option value="En proceso de liberación">En proceso de liberación</option>
+            </select>
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Cliente</th>
+                        <th>ID del Proyecto</th>
+                        <th>Comentarios</th>
+                        <th>Estatus</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
